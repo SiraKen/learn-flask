@@ -1,0 +1,21 @@
+#!/bin/bash
+set -Ceux
+
+ARGS=${@:2}
+
+case $1 in
+"up")
+  docker compose up
+;;
+"down")
+  docker compose down
+;;
+"reset")
+  docker compose down
+  docker compose build --no-cache
+  docker compose up
+;;
+*)
+  echo Unexpected command.
+;;
+esac

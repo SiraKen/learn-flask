@@ -1,0 +1,4 @@
+# requirements
+flask
+flask_cors
+mysql-connector-python
