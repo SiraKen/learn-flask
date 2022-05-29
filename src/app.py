@@ -32,6 +32,8 @@ def db_test():
   )
   cursor = db.cursor(dictionary=True)
 
+  # cursor.execute('DROP TABLE IF EXISTS users')
+
   # create table
   cursor.execute("""
     CREATE TABLE IF NOT EXISTS `users` (
@@ -45,7 +47,7 @@ def db_test():
       `updated_at` timestamp NULL DEFAULT NULL,
       PRIMARY KEY (`id`),
       UNIQUE KEY `users_email_unique` (`email`)
-    ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
   """)
 
   # fetch data
@@ -59,4 +61,4 @@ def return_user(username) -> str:
   return username
 
 if __name__ == '__main__':
-  app.run()
+  app.run(host='0.0.0.0', debug=True)

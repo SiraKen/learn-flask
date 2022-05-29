@@ -6,24 +6,23 @@ services:
     ports:
       - "5001:5000"
     volumes:
-      - "./src:/projects"
+      - "./src:/app"
     tty: true
-    environment:
-      TZ: Asia/Tokyo
-      FLASK_APP: run.py
-      FLASK_ENV: development
-    command: flask run --host 0.0.0.0 --port 5000
   mysql:
+    platform: linux/x86_64
     image: mysql:5.7
     volumes:
-      - "./database:/var/lib/mysql"
+      - "flask-mysql:/var/lib/mysql"
     environment:
       MYSQL_ROOT_PASSWORD: "root"
       MYSQL_DATABASE: "flask"
       MYSQL_USER: "flask"
       MYSQL_PASSWORD: "flask"
     ports:
-      - "3306:3306"
+      - "3307:3306"
     depends_on:
       - flask
     restart: always
+volumes:
+  flask-mysql:
+    driver: local

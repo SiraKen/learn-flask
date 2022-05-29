@@ -1,9 +1,11 @@
 FROM python:latest
 
-ARG project_dir=/projects/
+WORKDIR /app
 
-ADD src/requirements.txt $project_dir
-
-WORKDIR $project_dir
+ADD ./src .
 
 RUN pip install -r requirements.txt
+
+EXPOSE 5000
+
+CMD ["python", "app.py"]
