@@ -1,4 +1,6 @@
 # requirements
 flask
 flask_cors
+SQLAlchemy
+PyMySQL
 mysql-connector-python

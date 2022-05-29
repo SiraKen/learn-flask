@@ -19,8 +19,8 @@ except Exception as e:
 
 @app.route('/')
 def hello_world():
-  values = {'text': 'Hello, World!'}
-  return render_template('pages/index.html', values=values)
+    args = request.args
+    return render_template('pages/index.html', args=args)
 
 @app.route('/db')
 def db_test():
@@ -52,7 +52,8 @@ def db_test():
 
   # fetch data
   cursor.execute('SELECT * FROM users')
-  users = cursor.fetchall()
+  # users = cursor.fetchall()
+  users = cursor.fetchone()
   
   return jsonify(users)
 
