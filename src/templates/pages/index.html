@@ -8,6 +8,20 @@
   </head>
   <body>
     Hello, world!<br />
-    {{ args.text }}
+    {{ args.text }}<br />
+    <hr />
+    <a href="{{ args.link }}">{{ args.link }}</a>
+    <hr />
+    <ul style="list-style: none">
+      {% for i in range(0, 100) %} {% if i % 15 == 0 %}
+      <li>FizzBuzz</li>
+      {% elif i % 3 == 0 %}
+      <li>Fizz</li>
+      {% elif i % 5 == 0 %}
+      <li>Buzz</li>
+      {% else %}
+      <li>{{ i }}</li>
+      {% endif %} {% endfor %}
+    </ul>
   </body>
 </html>
